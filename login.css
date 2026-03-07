@@ -1,0 +1,158 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Geist", sans-serif;
+    background-color: #f6f8fa;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-wrapper {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 40px;
+    width: 100%;
+    max-width: 520px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.github-logo {
+    width: 70px;
+    height: 70px;
+}
+
+.login-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #24292f;
+    margin-bottom: 6px;
+}
+
+.login-subtitle {
+    text-align: center;
+    font-size: 15px;
+    color: #6e7781;
+    margin-bottom: 28px;
+}
+
+.error-msg {
+    background-color: #ffeef0;
+    border: 1px solid #ffc9cc;
+    color: #cf222e;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+.hidden {
+    display: none;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    color: #24292f;
+    margin-bottom: 6px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #24292f;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #4200ff;
+    box-shadow: 0 0 0 3px rgba(66, 0, 255, 0.1);
+}
+
+.input-hint {
+    font-size: 12px;
+    color: #4200ff;
+    margin-top: 5px;
+}
+
+.signin-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #4200ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 6px;
+}
+
+.signin-btn:hover {
+    background-color: #3500cc;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 22px 0 16px;
+    color: #6e7781;
+    font-size: 14px;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #d0d7de;
+}
+
+.demo-label {
+    text-align: center;
+    font-size: 14px;
+    color: #6e7781;
+    margin-bottom: 10px;
+}
+
+.demo-box {
+    background-color: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    font-size: 14px;
+    color: #24292f;
+    line-height: 1.8;
+}
+

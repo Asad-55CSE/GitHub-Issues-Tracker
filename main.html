@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker - Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
+    <title>GitHub Issues Tracker</title>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="nav-inner">
+            <div class="nav-brand">
+                <img class="nav-logo" src="./assets/github-logo.png" alt="GitHub Logo">
+                <span class="nav-title">GitHub Issues Tracker</span>
+            </div>
+            <div class="nav-right">
+                <div class="search-wrap">
+                    <input type="text" class="search-input" id="search-input" placeholder="Search issues...">
+                    <button class="search-btn" onclick="handleSearch()">Search</button>
+                </div>
+                <button class="new-issue-btn">+ New Issue</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+
+        <div class="tab-section">
+            <div class="tab-wrap">
+                <button class="tab-btn active-tab" id="tab-All" onclick="switchTab('All')">All</button>
+                <button class="tab-btn" id="tab-Open" onclick="switchTab('Open')">Open</button>
+                <button class="tab-btn" id="tab-Closed" onclick="switchTab('Closed')">Closed</button>
+            </div>
+        </div>
+
+        <div class="issues-container">
+            <div class="issues-header">
+                <div class="issues-header-left">
+
+                    <div class="header-icon-wrap">
+                        <img class="header-icon" src="./assets/Aperture.png" alt="">
+                    </div>
+                    <div>
+                        <h2 class="issues-count-text" id="issues-count-text">0 Issues</h2>
+                        <p class="issues-sub">Track and manage your project issues</p>
+                    </div>
+                </div>
+                <div class="issues-header-right">
+                    <span class="legend open-legend">Open</span>
+                    <span class="legend closed-legend">Closed</span>
+                </div>
+            </div>
+
+            <div class="spinner-wrap" id="spinner-wrap">
+                <div class="spinner"></div>
+            </div>
+
+            <div class="cards-grid" id="cards-grid"></div>
+
+            <div class="empty-state hidden" id="empty-state">
+                <p class="empty-text">No issues found</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal-overlay hidden" id="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-box" id="modal-box">
+            <div class="modal-header">
+                <div class="modal-status-icon" id="modal-status-icon"></div>
+                <div class="modal-header-info">
+                    <h3 class="modal-title" id="modal-title"></h3>
+                    <p class="modal-meta" id="modal-meta"></p>
+                </div>
+                <button class="modal-close-btn" onclick="closeModalBtn()">x</button>
+            </div>
+
+            <div class="modal-labels-row" id="modal-labels-row"></div>
+
+            <p class="modal-description" id="modal-description"></p>
+
+            <div class="modal-details">
+                <div class="modal-detail-row">
+                    <span class="modal-detail-label">Assignee:</span>
+                    <span class="modal-detail-value" id="modal-assignee"></span>
+                </div>
+                <div class="modal-detail-row">
+                    <span class="modal-detail-label">Priority:</span>
+                    <span class="modal-detail-value" id="modal-priority"></span>
+                </div>
+            </div>
+
+            <button class="modal-close-issue-btn" onclick="closeModalBtn()">Close</button>
+        </div>
+    </div>
+
+</body>
+
+</html>

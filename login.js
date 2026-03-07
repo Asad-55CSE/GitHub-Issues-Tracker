@@ -10,7 +10,7 @@ function handleLogin() {
         
         localStorage.setItem("isLoggedIn", "true");
         
-        window.location.href = "index.html";
+        window.location.href = "main.html";
     } else {
         errorMsg.classList.remove("hidden");
     }

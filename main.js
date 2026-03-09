@@ -189,6 +189,18 @@ function handleSearch() {
         });
 }
 
+document.getElementById("search-input").addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+        handleSearch();
+    }
+});
+
+document.getElementById("search-input").addEventListener("input", function() {
+    if (this.value === "") {
+        loadIssues();
+    }
+});
+
 function openModal(issue) {
     var status = issue.status || issue.state || "open";
     var isOpen = status === "open";

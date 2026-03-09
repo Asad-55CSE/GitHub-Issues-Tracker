@@ -189,6 +189,54 @@ function handleSearch() {
         });
 }
 
+function openModal(issue) {
+    var status = issue.status || issue.state || "open";
+    var isOpen = status === "open";
+
+    document.getElementById("modal-status-icon").innerHTML = getStatusIcon(isOpen);
+
+    document.getElementById("modal-title").innerText = issue.title || "No title";
+
+    var author = issue.author || issue.user || "unknown";
+    if (typeof author === "object") author = author.login || author.name || "unknown";
+    var date = formatDate(issue.created_at || issue.createdAt);
+    var openedText = isOpen ? "Opened" : "Closed";
+    document.getElementById("modal-meta").innerText = openedText + "   Opened by " + author + "   " + date;
+
+    var labelsHTML = "";
+    var labels = issue.labels || [];
+    for (var i = 0; i < labels.length; i++) {
+        var label = labels[i];
+        var labelName = label.name || label;
+        var labelClass = getLabelClass(labelName);
+        labelsHTML += '<span class="label-tag ' + labelClass + '">' + labelName + '</span>';
+    }
+    document.getElementById("modal-labels-row").innerHTML = labelsHTML;
+
+    document.getElementById("modal-description").innerText = issue.body || issue.description || "No description available.";
+
+    var assignee = issue.assignee || issue.assignees;
+    if (Array.isArray(assignee)) assignee = assignee[0];
+    if (typeof assignee === "object" && assignee !== null) assignee = assignee.login || assignee.name;
+    document.getElementById("modal-assignee").innerText = assignee || author;
+
+    document.getElementById("modal-priority").innerText = issue.priority || "Low";
+
+    document.getElementById("modal-overlay").classList.remove("hidden");
+    document.body.classList.add("no-scroll");
+}
+
+function closeModal(event) {
+    if (event.target === document.getElementById("modal-overlay")) {
+        closeModalBtn();
+    }
+}
+
+function closeModalBtn() {
+    document.getElementById("modal-overlay").classList.add("hidden");
+    document.body.classList.remove("no-scroll");
+}
+
 function showSpinner() {
     document.getElementById("spinner-wrap").classList.remove("hidden");
     document.getElementById("cards-grid").innerHTML = "";

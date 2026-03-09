@@ -152,6 +152,43 @@ function formatDate(dateStr) {
     return (d.getMonth() + 1) + "/" + d.getDate() + "/" + d.getFullYear();
 }
 
+function switchTab(tab) {
+    currentTab = tab;
+
+    document.getElementById("tab-All").classList.remove("active-tab");
+    document.getElementById("tab-Open").classList.remove("active-tab");
+    document.getElementById("tab-Closed").classList.remove("active-tab");
+    document.getElementById("tab-" + tab).classList.add("active-tab");
+
+    renderCards(allIssues);
+}
+
+function handleSearch() {
+    var query = document.getElementById("search-input").value.trim();
+
+    if (query === "") {
+        renderCards(allIssues);
+        return;
+    }
+
+    showSpinner();
+
+    fetch(API_SEARCH + encodeURIComponent(query))
+        .then(function(res) {
+            return res.json();
+        })
+        .then(function(data) {
+            var results = data.data || data || [];
+            allIssues = results;
+            hideSpinner();
+            renderCards(results);
+        })
+        .catch(function(err) {
+            console.log("Search error:", err);
+            hideSpinner();
+        });
+}
+
 function showSpinner() {
     document.getElementById("spinner-wrap").classList.remove("hidden");
     document.getElementById("cards-grid").innerHTML = "";

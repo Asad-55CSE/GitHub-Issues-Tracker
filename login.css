@@ -156,3 +156,13 @@ body {
     line-height: 1.8;
 }
 
+@media (max-width: 600px) {
+    .login-card {
+        padding: 28px 20px;
+    }
+
+    .login-title {
+        font-size: 20px;
+    }
+}
+
